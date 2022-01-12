@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExpenseDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="ExpenseDataModel.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="ExpenseDataModel.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="ExpenseDataModel.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="ExpenseDataModel.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="ExpenseDataModel.AspNetUser" />
+    <EntitySet Name="AuditExpenseForms" EntityType="ExpenseDataModel.AuditExpenseForm" />
+    <EntitySet Name="AuditExpenseItems" EntityType="ExpenseDataModel.AuditExpenseItem" />
+    <EntitySet Name="ExpenseForms" EntityType="ExpenseDataModel.ExpenseForm" />
+    <EntitySet Name="ExpenseItems" EntityType="ExpenseDataModel.ExpenseItem" />
+    <EntitySet Name="ExpenseTypes" EntityType="ExpenseDataModel.ExpenseType" />
+    <EntitySet Name="ReportTemplates" EntityType="ExpenseDataModel.ReportTemplate" />
+    <EntitySet Name="Roles" EntityType="ExpenseDataModel.Role" />
+    <EntitySet Name="Status" EntityType="ExpenseDataModel.Status" />
+    <EntitySet Name="sysdiagrams" EntityType="ExpenseDataModel.sysdiagram" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="ExpenseDataModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="ExpenseDataModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsers_Role1" Association="ExpenseDataModel.FK_AspNetUsers_Role1">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExpenseForm_AspNetUsers" Association="ExpenseDataModel.FK_ExpenseForm_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="ExpenseForm" EntitySet="ExpenseForms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReportTemplate_AspNetUsers" Association="ExpenseDataModel.FK_ReportTemplate_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="ReportTemplate" EntitySet="ReportTemplates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AuditExpenseForm_ExpenseForm" Association="ExpenseDataModel.FK_AuditExpenseForm_ExpenseForm">
+      <End Role="ExpenseForm" EntitySet="ExpenseForms" />
+      <End Role="AuditExpenseForm" EntitySet="AuditExpenseForms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AuditExpenseItem_ExpenseItem" Association="ExpenseDataModel.FK_AuditExpenseItem_ExpenseItem">
+      <End Role="ExpenseItem" EntitySet="ExpenseItems" />
+      <End Role="AuditExpenseItem" EntitySet="AuditExpenseItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExpenseForm_Status" Association="ExpenseDataModel.FK_ExpenseForm_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="ExpenseForm" EntitySet="ExpenseForms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExpenseItem_ExpenseForm" Association="ExpenseDataModel.FK_ExpenseItem_ExpenseForm">
+      <End Role="ExpenseForm" EntitySet="ExpenseForms" />
+      <End Role="ExpenseItem" EntitySet="ExpenseItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExpenseItem_ExpenseType" Association="ExpenseDataModel.FK_ExpenseItem_ExpenseType">
+      <End Role="ExpenseType" EntitySet="ExpenseTypes" />
+      <End Role="ExpenseItem" EntitySet="ExpenseItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReportTemplate_ExpenseType" Association="ExpenseDataModel.FK_ReportTemplate_ExpenseType">
+      <End Role="ExpenseType" EntitySet="ExpenseTypes" />
+      <End Role="ReportTemplate" EntitySet="ReportTemplates" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="ExpenseDataModel.AspNetUserRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="ExpenseDataModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="ExpenseDataModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="ExpenseDataModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ManagerUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="RoleID" Type="Int32" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="ExpenseDataModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="ExpenseDataModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+    <NavigationProperty Name="Role" Relationship="ExpenseDataModel.FK_AspNetUsers_Role1" FromRole="AspNetUser" ToRole="Role" />
+    <NavigationProperty Name="ExpenseForms" Relationship="ExpenseDataModel.FK_ExpenseForm_AspNetUsers" FromRole="AspNetUser" ToRole="ExpenseForm" />
+    <NavigationProperty Name="ReportTemplates" Relationship="ExpenseDataModel.FK_ReportTemplate_AspNetUsers" FromRole="AspNetUser" ToRole="ReportTemplate" />
+    <NavigationProperty Name="AspNetRoles" Relationship="ExpenseDataModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+  </EntityType>
+  <EntityType Name="AuditExpenseForm">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ExpenseFormID" Type="Int64" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RejectReason" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ExpenseForm" Relationship="ExpenseDataModel.FK_AuditExpenseForm_ExpenseForm" FromRole="AuditExpenseForm" ToRole="ExpenseForm" />
+  </EntityType>
+  <EntityType Name="AuditExpenseItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ExpenseItemID" Type="Int64" />
+    <Property Name="ExpenseType" Type="Int32" />
+    <Property Name="BillNumber" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="ExpenseDate" Type="DateTime" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Cost" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FormID" Type="Int64" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ExpenseItem" Relationship="ExpenseDataModel.FK_AuditExpenseItem_ExpenseItem" FromRole="AuditExpenseItem" ToRole="ExpenseItem" />
+  </EntityType>
+  <EntityType Name="ExpenseForm">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RejectReason" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="ExpenseDataModel.FK_ExpenseForm_AspNetUsers" FromRole="ExpenseForm" ToRole="AspNetUser" />
+    <NavigationProperty Name="AuditExpenseForms" Relationship="ExpenseDataModel.FK_AuditExpenseForm_ExpenseForm" FromRole="ExpenseForm" ToRole="AuditExpenseForm" />
+    <NavigationProperty Name="Status1" Relationship="ExpenseDataModel.FK_ExpenseForm_Status" FromRole="ExpenseForm" ToRole="Status" />
+    <NavigationProperty Name="ExpenseItems" Relationship="ExpenseDataModel.FK_ExpenseItem_ExpenseForm" FromRole="ExpenseForm" ToRole="ExpenseItem" />
+  </EntityType>
+  <EntityType Name="ExpenseItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ExpenseType" Type="Int32" Nullable="false" />
+    <Property Name="BillNumber" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="ExpenseDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Cost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="FormID" Type="Int64" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AuditExpenseItems" Relationship="ExpenseDataModel.FK_AuditExpenseItem_ExpenseItem" FromRole="ExpenseItem" ToRole="AuditExpenseItem" />
+    <NavigationProperty Name="ExpenseForm" Relationship="ExpenseDataModel.FK_ExpenseItem_ExpenseForm" FromRole="ExpenseItem" ToRole="ExpenseForm" />
+    <NavigationProperty Name="ExpenseType1" Relationship="ExpenseDataModel.FK_ExpenseItem_ExpenseType" FromRole="ExpenseItem" ToRole="ExpenseType" />
+  </EntityType>
+  <EntityType Name="ExpenseType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ExpenseItems" Relationship="ExpenseDataModel.FK_ExpenseItem_ExpenseType" FromRole="ExpenseType" ToRole="ExpenseItem" />
+    <NavigationProperty Name="ReportTemplates" Relationship="ExpenseDataModel.FK_ReportTemplate_ExpenseType" FromRole="ExpenseType" ToRole="ReportTemplate" />
+  </EntityType>
+  <EntityType Name="ReportTemplate">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExpenseType" Type="Int32" />
+    <Property Name="Month" Type="Int32" />
+    <Property Name="Year" Type="Int32" />
+    <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IsMonthly" Type="Boolean" />
+    <NavigationProperty Name="AspNetUser" Relationship="ExpenseDataModel.FK_ReportTemplate_AspNetUsers" FromRole="ReportTemplate" ToRole="AspNetUser" />
+    <NavigationProperty Name="ExpenseType1" Relationship="ExpenseDataModel.FK_ReportTemplate_ExpenseType" FromRole="ReportTemplate" ToRole="ExpenseType" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="CanInsert" Type="Boolean" Nullable="false" />
+    <Property Name="CanApprove" Type="Boolean" Nullable="false" />
+    <Property Name="CanPay" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="ExpenseDataModel.FK_AspNetUsers_Role1" FromRole="Role" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ExpenseForms" Relationship="ExpenseDataModel.FK_ExpenseForm_Status" FromRole="Status" ToRole="ExpenseForm" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Type="ExpenseDataModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ExpenseDataModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Type="ExpenseDataModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ExpenseDataModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsers_Role1">
+    <End Type="ExpenseDataModel.Role" Role="Role" Multiplicity="0..1" />
+    <End Type="ExpenseDataModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AspNetUser">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExpenseForm_AspNetUsers">
+    <End Type="ExpenseDataModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="ExpenseDataModel.ExpenseForm" Role="ExpenseForm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExpenseForm">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReportTemplate_AspNetUsers">
+    <End Type="ExpenseDataModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+    <End Type="ExpenseDataModel.ReportTemplate" Role="ReportTemplate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReportTemplate">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AuditExpenseForm_ExpenseForm">
+    <End Type="ExpenseDataModel.ExpenseForm" Role="ExpenseForm" Multiplicity="0..1" />
+    <End Type="ExpenseDataModel.AuditExpenseForm" Role="AuditExpenseForm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExpenseForm">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AuditExpenseForm">
+        <PropertyRef Name="ExpenseFormID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AuditExpenseItem_ExpenseItem">
+    <End Type="ExpenseDataModel.ExpenseItem" Role="ExpenseItem" Multiplicity="0..1" />
+    <End Type="ExpenseDataModel.AuditExpenseItem" Role="AuditExpenseItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExpenseItem">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AuditExpenseItem">
+        <PropertyRef Name="ExpenseItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExpenseForm_Status">
+    <End Type="ExpenseDataModel.Status" Role="Status" Multiplicity="1" />
+    <End Type="ExpenseDataModel.ExpenseForm" Role="ExpenseForm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ExpenseForm">
+        <PropertyRef Name="Status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExpenseItem_ExpenseForm">
+    <End Type="ExpenseDataModel.ExpenseForm" Role="ExpenseForm" Multiplicity="1" />
+    <End Type="ExpenseDataModel.ExpenseItem" Role="ExpenseItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExpenseForm">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ExpenseItem">
+        <PropertyRef Name="FormID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExpenseItem_ExpenseType">
+    <End Type="ExpenseDataModel.ExpenseType" Role="ExpenseType" Multiplicity="1" />
+    <End Type="ExpenseDataModel.ExpenseItem" Role="ExpenseItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExpenseType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ExpenseItem">
+        <PropertyRef Name="ExpenseType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReportTemplate_ExpenseType">
+    <End Type="ExpenseDataModel.ExpenseType" Role="ExpenseType" Multiplicity="0..1" />
+    <End Type="ExpenseDataModel.ReportTemplate" Role="ReportTemplate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExpenseType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReportTemplate">
+        <PropertyRef Name="ExpenseType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Type="ExpenseDataModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+    <End Type="ExpenseDataModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
+</Schema>
