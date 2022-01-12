@@ -30,7 +30,7 @@ namespace ExpenseApplication.Account
                     newUser.Name = Name.Text;
                     newUser.Surname = Surname.Text;
                     newUser.RoleID = (int)Helpers.Parameters.RoleEnum.Staff;
-                    newUser.ManagerUserID = "40223c03-9080-48d2-b041-0b8c84266afe";
+                    newUser.ManagerUserID = "d51570eb-1492-42d4-866a-8321b1a972f1";
                     dbconnection.SaveChanges();
                 }
                 
