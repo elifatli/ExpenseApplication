@@ -1,0 +1,13 @@
+﻿Installing assembly 'C:\Users\elif.atli\Documents\visual studio 2015\Projects\ExpenseApplication\ReminderService\bin\Debug\ReminderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\elif.atli\Documents\visual studio 2015\Projects\ExpenseApplication\ReminderService\bin\Debug\ReminderService.InstallLog
+   assemblypath = C:\Users\elif.atli\Documents\visual studio 2015\Projects\ExpenseApplication\ReminderService\bin\Debug\ReminderService.exe
+No public installers with the RunInstallerAttribute.Yes attribute could be found in the C:\Users\elif.atli\Documents\visual studio 2015\Projects\ExpenseApplication\ReminderService\bin\Debug\ReminderService.exe assembly.
+Committing assembly 'C:\Users\elif.atli\Documents\visual studio 2015\Projects\ExpenseApplication\ReminderService\bin\Debug\ReminderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\elif.atli\Documents\visual studio 2015\Projects\ExpenseApplication\ReminderService\bin\Debug\ReminderService.InstallLog
+   assemblypath = C:\Users\elif.atli\Documents\visual studio 2015\Projects\ExpenseApplication\ReminderService\bin\Debug\ReminderService.exe
+No public installers with the RunInstallerAttribute.Yes attribute could be found in the C:\Users\elif.atli\Documents\visual studio 2015\Projects\ExpenseApplication\ReminderService\bin\Debug\ReminderService.exe assembly.
+Remove InstallState file because there are no installers.
